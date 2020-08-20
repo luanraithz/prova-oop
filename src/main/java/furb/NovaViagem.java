@@ -43,6 +43,11 @@ public class NovaViagem extends JFrame {
         this.pack();
 
         criarViagemButton.addActionListener(x -> {
+            if (dataTextField.getText().isEmpty() || horaTextField.getText().isEmpty() || placa.getText().isEmpty() ||
+                    nome.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Insira a data, a hora, a placa e o nome");
+                return;
+            }
             Viagem viagem;
             LocalDate date = LocalDate.parse(dataTextField.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             LocalTime hora = LocalTime.parse(horaTextField.getText(), DateTimeFormatter.ofPattern("H:m"));

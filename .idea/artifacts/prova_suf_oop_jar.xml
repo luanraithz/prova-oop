@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="prova-suf-oop:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/prova_suf_oop_jar</output-path>
+    <root id="archive" name="prova-suf-oop.jar">
+      <element id="module-output" name="prova-suf-oop" />
+    </root>
+  </artifact>
+</component>

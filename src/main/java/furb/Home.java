@@ -16,6 +16,7 @@ public class Home extends JFrame {
     private JButton procurarViagemButton;
     private JButton salvarButton;
     private JList passageiros;
+    private JScrollPane scroll;
     private JButton listarPassageiros;
     private JButton consultarViagemButton;
     private final Empresa empresa;
@@ -55,5 +56,6 @@ public class Home extends JFrame {
                 ex.printStackTrace();
             }
         });
+        this.scroll.setViewportView(passageiros);
     }
 }

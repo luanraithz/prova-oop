@@ -26,6 +26,7 @@ public class AddPassageiros extends JFrame {
     private JButton addIdoso;
     private JButton salvarButton;
     private JList list1;
+    private JScrollPane scroll;
 
     public AddPassageiros(Empresa empresa, Viagem viagem) {
         this.viagem = viagem;
@@ -37,9 +38,9 @@ public class AddPassageiros extends JFrame {
         this.pack();
         addPassageiro.addActionListener(x -> {
             try {
-                if (nome.getText() == null
-                        || telefone.getText() == null
-                        || idade.getText() == null) {
+                if (nome.getText().isEmpty()
+                        || telefone.getText().isEmpty()
+                        || idade.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Insira o nome, a idade e o telefone");
                     return;
                 }
@@ -52,10 +53,10 @@ public class AddPassageiros extends JFrame {
 
         addEstudante.addActionListener(x -> {
             try {
-                if (nome.getText() == null
-                        || telefone.getText() == null
-                        || idade.getText() == null
-                        || escola.getText() == null) {
+                if (nome.getText().isEmpty()
+                        || telefone.getText().isEmpty()
+                        || idade.getText().isEmpty()
+                        || escola.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Insira o nome, a idade, o telefone e a escola");
                     return;
                 }
@@ -68,10 +69,10 @@ public class AddPassageiros extends JFrame {
 
         addIdoso.addActionListener(x -> {
             try {
-                if (nome.getText() == null
-                        || telefone.getText() == null
-                        || idade.getText() == null
-                        || rg.getText() == null) {
+                if (nome.getText().isEmpty()
+                        || telefone.getText().isEmpty()
+                        || idade.getText().isEmpty()
+                        || rg.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Insira o nome, a idade, o telefone e o rg");
                     return;
                 }
@@ -89,6 +90,7 @@ public class AddPassageiros extends JFrame {
             this.dispose();
         });
 
+        this.scroll.setViewportView(list1);
     }
 
     void clearFields() {
