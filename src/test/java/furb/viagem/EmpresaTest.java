@@ -1,3 +1,4 @@
+// Luan Raithz Machado
 package furb.viagem;
 
 import furb.passageiro.Estudante;
@@ -9,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import javax.swing.text.html.Option;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Arrays;

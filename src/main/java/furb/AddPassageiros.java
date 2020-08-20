@@ -1,3 +1,4 @@
+// Luan Raithz Machado
 package furb;
 
 import furb.passageiro.Estudante;
@@ -36,6 +37,12 @@ public class AddPassageiros extends JFrame {
         this.pack();
         addPassageiro.addActionListener(x -> {
             try {
+                if (nome.getText() == null
+                        || telefone.getText() == null
+                        || idade.getText() == null) {
+                    JOptionPane.showMessageDialog(null, "Insira o nome, a idade e o telefone");
+                    return;
+                }
                 Passageiro passageiro = new Passageiro(nome.getText(), telefone.getText(), Integer.parseInt(idade.getText()));
                 this.add(passageiro);
             } catch (Exception exception) {
@@ -45,6 +52,13 @@ public class AddPassageiros extends JFrame {
 
         addEstudante.addActionListener(x -> {
             try {
+                if (nome.getText() == null
+                        || telefone.getText() == null
+                        || idade.getText() == null
+                        || escola.getText() == null) {
+                    JOptionPane.showMessageDialog(null, "Insira o nome, a idade, o telefone e a escola");
+                    return;
+                }
                 Estudante estudante = new Estudante(nome.getText(), telefone.getText(), Integer.parseInt(idade.getText()), escola.getText());
                 this.add(estudante);
             } catch (Exception exception) {
@@ -54,6 +68,13 @@ public class AddPassageiros extends JFrame {
 
         addIdoso.addActionListener(x -> {
             try {
+                if (nome.getText() == null
+                        || telefone.getText() == null
+                        || idade.getText() == null
+                        || rg.getText() == null) {
+                    JOptionPane.showMessageDialog(null, "Insira o nome, a idade, o telefone e o rg");
+                    return;
+                }
                 this.add(new Idoso(nome.getText(), telefone.getText(), Integer.parseInt(idade.getText()), rg.getText()));
             } catch (Exception exception) {
                 JOptionPane.showMessageDialog(null, exception.getMessage());

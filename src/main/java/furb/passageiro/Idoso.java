@@ -1,7 +1,9 @@
 // Luan Raithz Machado
 package furb.passageiro;
 
-public class Idoso extends Passageiro {
+import java.io.Serializable;
+
+public class Idoso extends Passageiro implements Serializable {
 	private String rg; 
 	
 	public Idoso(String nome, String telefone, int idade, String rg) throws Exception {

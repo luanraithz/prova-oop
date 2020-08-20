@@ -5,22 +5,25 @@ package furb.viagem;
 import com.sun.org.apache.xpath.internal.objects.XString;
 import furb.passageiro.Passageiro;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class Viagem {
+public abstract class Viagem implements Serializable {
     private String placaOnibus;
     private String nomeMotorista;
     private LocalDate dataViagem;
 
-
     private LocalTime horaViagem;
     private List<Passageiro> passageiros = new ArrayList<>();
+
+    protected Viagem() {}
 
     public Viagem(String placaOnibus, String nomeMotorista, LocalDate dataViagem, LocalTime horaViagem) {
         this.placaOnibus = placaOnibus;
@@ -48,6 +51,7 @@ public abstract class Viagem {
             this.passageiros.stream()
                     .map(Passageiro::toCSVRow)
                     .forEach(pw::println);
+            JOptionPane.showMessageDialog(null, "Arquivo gerado em " + csvOutputFile.getAbsolutePath());
         } catch (Exception exception) {
             exception.printStackTrace();
         }

@@ -1,7 +1,9 @@
 // Luan Raithz Machado
 package furb.passageiro;
 
-public class Estudante extends Passageiro {
+import java.io.Serializable;
+
+public class Estudante extends Passageiro implements Serializable {
     private String escola;
 
     public Estudante(String nome, String telefone, int idade, String escola)

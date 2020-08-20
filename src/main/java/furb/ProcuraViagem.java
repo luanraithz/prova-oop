@@ -1,3 +1,4 @@
+// Luan Raithz Machado
 package furb;
 
 import furb.viagem.Empresa;
@@ -5,9 +6,14 @@ import furb.viagem.Viagem;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 import java.awt.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 public class ProcuraViagem extends JFrame {
@@ -23,6 +29,8 @@ public class ProcuraViagem extends JFrame {
     private JFormattedTextField dataTextField;
     private JFormattedTextField horaTextField;
     private Viagem viagem;
+    private static final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private static final DateFormat horaFormat = new SimpleDateFormat("hh:mm");
 
     public ProcuraViagem(Empresa empresa) {
         panel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -33,8 +41,8 @@ public class ProcuraViagem extends JFrame {
         dadosViagem.setVisible(false);
 
         procurarButton.addActionListener(x -> {
-            LocalDate date = LocalDate.parse(dataTextField.getText(), DateUtils.DATA_FORMAT);
-            LocalTime hora = LocalTime.parse(horaTextField.getText(), DateUtils.HORA_FORMAT);
+            LocalDate date = LocalDate.parse(dataTextField.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            LocalTime hora = LocalTime.parse(horaTextField.getText(), DateTimeFormatter.ofPattern("H:m"));
             Optional<Viagem> viagemEncontrada = empresa.procuraViagem(date, hora, placaTextfield.getText());
             if (viagemEncontrada.isPresent()) {
                 this.viagem = viagemEncontrada.get();
@@ -60,10 +68,12 @@ public class ProcuraViagem extends JFrame {
         });
     }
 
-    private void createUIComponents() {
-        dataTextField = new JFormattedTextField(DateUtils.DATA_FORMAT);
-        horaTextField = new JFormattedTextField(DateUtils.HORA_FORMAT);
-        DateUtils.DATA_MASK.install(dataTextField);
-        DateUtils.HORA_MASK.install(horaTextField);
+    private void createUIComponents() throws ParseException {
+        dataTextField = new JFormattedTextField(dateFormat);
+        horaTextField = new JFormattedTextField(horaFormat);
+        MaskFormatter dataMask = new MaskFormatter("##/##/####");
+        MaskFormatter horaMask = new MaskFormatter("##:##");
+        dataMask.install(dataTextField);
+        horaMask.install(horaTextField);
     }
 }

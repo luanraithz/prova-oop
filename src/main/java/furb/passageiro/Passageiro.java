@@ -1,7 +1,9 @@
 // Luan Raithz Machado
 package furb.passageiro;
 
-public class Passageiro {
+import java.io.Serializable;
+
+public class Passageiro implements Serializable {
 	private String nome;
 	private String telefone;
 	private int idade;

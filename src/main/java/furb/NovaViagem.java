@@ -1,3 +1,4 @@
+// Luan Raithz Machado
 package furb;
 
 import furb.viagem.Empresa;
@@ -14,7 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
 
 public class NovaViagem extends JFrame {
     private JPanel panel;
@@ -43,8 +44,8 @@ public class NovaViagem extends JFrame {
 
         criarViagemButton.addActionListener(x -> {
             Viagem viagem;
-            LocalDate date = LocalDate.parse(dataTextField.getText(), DateUtils.DATA_FORMAT);
-            LocalTime hora = LocalTime.parse(horaTextField.getText(), DateUtils.HORA_FORMAT);
+            LocalDate date = LocalDate.parse(dataTextField.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            LocalTime hora = LocalTime.parse(horaTextField.getText(), DateTimeFormatter.ofPattern("H:m"));
             if (municipalRadioButton.isSelected()) {
                 viagem = new Municipal(placa.getText(), nome.getText(), date, hora);
             } else {
@@ -58,10 +59,12 @@ public class NovaViagem extends JFrame {
 
     }
 
-    private void createUIComponents() {
+    private void createUIComponents() throws ParseException {
         dataTextField = new JFormattedTextField(dateFormat);
         horaTextField = new JFormattedTextField(horaFormat);
-        DateUtils.DATA_MASK.install(dataTextField);
-        DateUtils.HORA_MASK.install(horaTextField);
+        MaskFormatter dataMask = new MaskFormatter("##/##/####");
+        MaskFormatter horaMask = new MaskFormatter("##:##");
+        dataMask.install(dataTextField);
+        horaMask.install(horaTextField);
     }
 }

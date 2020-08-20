@@ -1,4 +1,5 @@
-package furb.viagem;// Luan Raithz Machado
+// Luan Raithz Machado
+package furb.viagem;
 import furb.passageiro.Estudante;
 import furb.passageiro.Idoso;
 import furb.passageiro.Passageiro;

@@ -1,13 +1,14 @@
 // Luan Raithz Machado
 package furb.viagem;
 
-import furb.DateUtils;
 import furb.passageiro.Passageiro;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
-public class Municipal extends Viagem {
+public class Municipal extends Viagem implements Serializable {
     public int LIMIT = 55;
 
     public Municipal(String placaOnibus, String nomeMotorista, LocalDate dataViagem, LocalTime horaViagem) {
@@ -31,14 +32,13 @@ public class Municipal extends Viagem {
         StringBuilder builder = new StringBuilder();
         builder.append("Municipal");
         builder.append(',');
-        builder.append(getDataViagem().format(DateUtils.DATA_FORMAT));
+        builder.append(getDataViagem().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         builder.append(',');
-        builder.append(getHoraViagem().format(DateUtils.HORA_FORMAT));
+        builder.append(getHoraViagem().format(DateTimeFormatter.ofPattern("H:m")));
         builder.append(',');
         builder.append(getPlacaOnibus());
         builder.append(',');
         builder.append(getNomeMotorista());
-        builder.append('\n');
         return builder.toString();
     }
 

@@ -3,14 +3,16 @@ package furb.viagem;
 
 import furb.passageiro.Passageiro;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Empresa {
+public class Empresa implements Serializable {
     private List<Viagem> viagens = new ArrayList<>();
 
+    public Empresa() {}
     public List<Passageiro> getPassageirosMaisVelhos()
     {
         return viagens.stream()
